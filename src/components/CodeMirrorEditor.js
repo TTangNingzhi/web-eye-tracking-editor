@@ -104,23 +104,23 @@ const CodeMirrorEditor = ({code, gazePosOnScreen}) => {
             <ul>
                 <li>Gaze (mouse) position on screen: X: {gazePosOnScreen.x}, Y: {gazePosOnScreen.y}</li>
                 <li>Gaze (mouse) position on window: X: {gazePosOnWindow.x}, Y: {gazePosOnWindow.y}</li>
-                <hr/>
                 <li>Gaze (mouse) is over line {lineNum}, column {columnNum}</li>
-                <li>>>> Token: {token}</li>
-                <li>>>> AST chain: {astChain}</li>
+                <ul>
+                    <li>Token: {token}</li>
+                    <li>AST chain: {astChain}</li>
+                </ul>
             </ul>
-
-            <CodeMirror
-                value={code}
-                extensions={[java(), myTheme]} // Can be extended with more languages
-                height="500px"
-                onCreateEditor={(view) => {
-                    editorRef.current = {view};
-                }}
-                readOnly // Can be removed to enable editing
-            />
+                <CodeMirror
+                    value={code}
+                    extensions={[java(), myTheme]} // Can be extended with more languages
+                    height="500px"
+                    onCreateEditor={(view) => {
+                        editorRef.current = {view};
+                    }}
+                    readOnly // Can be removed to enable editing
+                />
         </div>
-    );
+);
 };
 
 export default CodeMirrorEditor;
