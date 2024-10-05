@@ -1,6 +1,6 @@
 # Web-based Eye Tracking Code Editor
 
-🚀 **[Try our live demo here!](#)** 🎉
+🚀 **[Try our live demo here!](https://webeyecode.netlify.app/)** 🎉
 
 ## Motivation
 
@@ -23,11 +23,13 @@ However, existing web-based experimental setups (e.g., [[1]](https://dl.acm.org/
 
 We developed a technical workflow for a web-based eye tracking code editor that addresses these limitations. The key idea is to use [CodeMirror](https://codemirror.net/), a popular web-based code editor, to provide code highlighting and editing features. We convert eye gaze data into semantic information by leveraging CodeMirror's APIs and resolving numerous technical issues.
 
-Below is a snapshot of our tool in action (using the mouse as a proxy for eye gaze). Feel free to try our [live demo](#) as well!
+Below is a snapshot of our tool in action (using the mouse as a proxy for eye gaze). Feel free to try our [live demo](https://webeyecode.netlify.app/) as well!
 
 <p align="center">
     <img src="./public/demo.gif" width="750px" max-width="100%" alt="Demo">
 </p>
+
+The main technical details can be found in `/src/components/CodeMirrorEditor.js`. Please refer to it if you want to adapt this tool for your research.
 
 > We previously tried the [Monaco Editor](https://microsoft.github.io/monaco-editor/), another popular web-based code editor with core features same as VSCode. However, Monaco Editor doesn't offer any APIs to convert coordinates to the offset or line/column position in the code, which is essential for analyzing eye tracking data.
 

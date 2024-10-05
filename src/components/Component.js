@@ -8,7 +8,7 @@ import Description from "./Description";
  * @returns {Element} Main component of the application.
  */
 const Component = () => {
-    const codeFilename = "BinarySearch.java"; // TwoSum.java, BinarySearch.java, etc.
+    const codeFilename = "TwoSum.java"; // TwoSum.java, BinarySearch.java, etc.
     const [code, setCode] = useState("");
 
     // Fetch the code content.
