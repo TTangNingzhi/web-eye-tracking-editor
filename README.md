@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Web-based Eye Tracking Code Editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🚀 **[Try our live demo here!](#)** 🎉
 
-## Available Scripts
+## Motivation
 
-In the project directory, you can run:
+Recently, researchers in the empirical software engineering community have become increasingly interested in using eye tracking to understand how developers read and write code. However, converting eye gaze data into semantic information (e.g., line, column, token) is technically challenging.
 
-### `npm start`
+While existing tools like [CodeGRITS](https://codegrits.github.io/CodeGRITS/) or [iTrace](https://www.i-trace.org/) provide in-IDE solutions, many researchers still prefer to use web-based experimental setups for several reasons:
+- **Convenient study design.** Participants may not need to modify code or rely on IDE features;
+- **Support for collecting other data types.** Enables gathering additional data, such as summary writing or surveys;
+- **Feasibility of remote data collection.** Allows easy link sharing with participants, particularly using webcam-based eye tracking.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+However, existing web-based experimental setups (e.g., [[1]](https://dl.acm.org/doi/full/10.1145/3664808), [[2]](https://dl.acm.org/doi/abs/10.1145/3643732), [[3]](https://onlinelibrary.wiley.com/doi/full/10.1002/smr.2706)) present several limitations:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **No code highlighting.** That differs from participants' daily coding experience and may affect their reading behavior;
+- **Labor-intensive and inaccurate post-processing.** For example, using OpenCV to detect the bounding box of each token from screenshots and OCR to recognize the text;
+- **Limited code length.** The entire code must be displayed on the screen, and participants cannot scroll;
+- **Difficulty in explaining AST semantics.** This requires reparsing the code and remapping the tokens to AST nodes post-hoc;
+- **No support for code editing.**
 
-### `npm test`
+## Solution
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We developed a technical workflow for a web-based eye tracking code editor that addresses these limitations. The key idea is to use [CodeMirror](https://codemirror.net/), a popular web-based code editor, to provide code highlighting and editing features. We convert eye gaze data into semantic information by leveraging CodeMirror's APIs and resolving numerous technical issues.
 
-### `npm run build`
+Below is a snapshot of our tool in action (using the mouse as a proxy for eye gaze). Feel free to try our [live demo](#) as well!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p align="center">
+    <img src="./public/demo.gif" width="750px" max-width="100%" alt="Demo">
+</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> We previously tried the [Monaco Editor](https://microsoft.github.io/monaco-editor/), another popular web-based code editor with core features same as VSCode. However, Monaco Editor doesn't offer any APIs to convert coordinates to the offset or line/column position in the code, which is essential for analyzing eye tracking data.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contact
 
-### `npm run eject`
+For more information, please contact [Ningzhi Tang](mailto:ntang@nd.edu) from the [SaNDwich Lab](https://toby.li/) at the University of Notre Dame. I'm happy to discuss the technical details and potential collaborations!
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you prefer an in-IDE solution, check out [CodeGRITS](https://codegrits.github.io/CodeGRITS/), developed by our team for JetBrains IDEs, which also supports tracking developer interactions within the IDE.
